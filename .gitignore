@@ -1,0 +1,42 @@
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+UserSettings/
+[Aa]ssets/AssetStoreTools*
+
+# Visual Studio / Rider
+.vscode/
+.idea/
+*.sln
+*.csproj
+*.unityproj
+*.pidb
+*.user
+*.userprefs
+*.suo
+*.tmp
+*.userosscache
+*.booproj
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Build
+*.apk
+*.aab
+*.exe
+*.app
+*.xcodeproj
+*.xcworkspace
+*.zip
+*.7z
+
+# Outros
+*.log
+*.vs/

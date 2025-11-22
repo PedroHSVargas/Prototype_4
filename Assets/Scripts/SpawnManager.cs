@@ -1,20 +1,41 @@
-using System.Collections;
+
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public GameObject powerUpPrefab;
     public float spawnRange = 9;
+
+    public int enemyCount;
+
+    public int waveNumber = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+        SpawnEnemyWave(waveNumber);
+        Instantiate(powerUpPrefab, GenerateSpawnPosition(), powerUpPrefab.transform.rotation);
+    }
+
+    void SpawnEnemyWave(int enemiesToSpawn)
+    {
+        for(int i= 0; i < enemiesToSpawn; i++)
+        {
+            Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        enemyCount = FindObjectsByType<Enemy>(FindObjectsSortMode.None).Length;
+        if (enemyCount == 0)
+        {
+            Instantiate(powerUpPrefab, GenerateSpawnPosition(), powerUpPrefab.transform.rotation);
+            waveNumber++;
+            SpawnEnemyWave(waveNumber);
+            
+        }
     }
     
     private Vector3 GenerateSpawnPosition()

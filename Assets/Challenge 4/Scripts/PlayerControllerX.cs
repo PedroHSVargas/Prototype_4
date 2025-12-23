@@ -1,12 +1,15 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControllerX : MonoBehaviour
 {
     private Rigidbody playerRb;
     private float speed = 500;
+    private float impulseSpeed = 5.0f;
     private GameObject focalPoint;
+
+
+    public ParticleSystem impulseParticles;
 
     public bool hasPowerup;
     public GameObject powerupIndicator;
@@ -19,13 +22,23 @@ public class PlayerControllerX : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         focalPoint = GameObject.Find("Focal Point");
+
     }
 
     void Update()
     {
         // Add force to player in direction of the focal point (and camera)
         float verticalInput = Input.GetAxis("Vertical");
-        playerRb.AddForce(focalPoint.transform.forward * verticalInput * speed * Time.deltaTime); 
+        float currentSpeed = speed;
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (impulseParticles != null) impulseParticles.Play();
+            currentSpeed *= impulseSpeed;
+        }
+        playerRb.AddForce(focalPoint.transform.forward * verticalInput * currentSpeed * Time.deltaTime); 
+
+
 
         // Set powerup indicator position to beneath player
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);

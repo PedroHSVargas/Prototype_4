@@ -291,7 +291,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   enemyPrefab: {fileID: 6405450327829581544, guid: e786e2b3e081c5541b64a28952b4f29b, type: 3}
+  powerUpPrefab: {fileID: 5181026354667482303, guid: e2171298ad381b24eacfe459fa4ff323, type: 3}
   spawnRange: 9
+  enemyCount: 0
+  waveNumber: 1
 --- !u!1 &1211016355
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,6 +946,10 @@ PrefabInstance:
     - target: {fileID: 5181026354667482303, guid: e2171298ad381b24eacfe459fa4ff323, type: 3}
       propertyPath: m_Name
       value: PowerUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181026354667482303, guid: e2171298ad381b24eacfe459fa4ff323, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
